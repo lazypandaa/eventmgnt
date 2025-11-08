@@ -82,7 +82,7 @@ spec:
           command: ['sh', '-c', 'until nc -z mysql 3306; do echo waiting for mysql; sleep 2; done;']
       containers:
         - name: backend
-          image: <your-dockerhub-username>/event-backend:v1
+          image: techmahendra/event-backend:v1
           ports:
             - containerPort: 2025
           env:
@@ -139,9 +139,9 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: <your-dockerhub-username>/event-frontend:v1
+          image: techmahendra/event-frontend:v1
           ports:
-            - containerPort: 2069
+            - containerPort: 80
           env:
             - name: REACT_APP_BACKEND_URL
               valueFrom:
@@ -159,6 +159,6 @@ spec:
   selector:
     app: frontend
   ports:
-    - port: 2069
-      targetPort: 2069
+    - port: 80
+      targetPort: 80
       nodePort: 30069
